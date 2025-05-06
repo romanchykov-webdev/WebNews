@@ -3,7 +3,7 @@ import styles from './styles.module.css'
 import NewItem from '../NewItem/NewItem.jsx';
 
 function NewsList({news}) {
-    // console.log("newBAner item",news);
+    console.log("newBAner item",news);
     return (
         <ul className={styles.list}>
             {
