@@ -5,7 +5,6 @@ import NewItem from '../NewItem/NewItem.jsx'
 import styles from './styles.module.css'
 
 function NewsList({ news }) {
-	// console.log('NewsList item', news)
 	return (
 		<ul className={styles.list}>
 			{news.map(item => {
