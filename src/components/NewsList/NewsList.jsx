@@ -1,18 +1,18 @@
-import React from 'react';
-import styles from './styles.module.css'
-import NewItem from '../NewItem/NewItem.jsx';
+import React from 'react'
 
-function NewsList({news}) {
-    console.log("newBAner item",news);
-    return (
-        <ul className={styles.list}>
-            {
-                news.map(item => {
-                    return <NewItem key={item.id} item={item} />
-                })
-            }
-        </ul>
-    );
+import NewItem from '../NewItem/NewItem.jsx'
+
+import styles from './styles.module.css'
+
+function NewsList({ news }) {
+	// console.log('NewsList item', news)
+	return (
+		<ul className={styles.list}>
+			{news.map(item => {
+				return <NewItem key={item.id} item={item} />
+			})}
+		</ul>
+	)
 }
 
-export default NewsList;
+export default NewsList
