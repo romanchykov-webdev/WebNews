@@ -68,8 +68,6 @@ function Main() {
 
 	return (
 		<main className={styles.main}>
-			{/*<NewItem item={news[0]}/>*/}
-
 			{news.length > 0 && !isLoading ? (
 				<NewBanner item={news[0]} />
 			) : (
