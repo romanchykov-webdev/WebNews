@@ -17,38 +17,38 @@ function Main() {
 	const totalPages = 10
 	const pageSize = 10
 	//
-	// const fetchNews = async currentPage => {
-	// 	try {
-	// 		setIsLoading(true)
-	// 		const response = await getNews(currentPage, pageSize)
-	// 		setNews(response.news)
-	// 		console.log('response', response)
-	// 		setIsLoading(false)
-	// 	} catch (e) {
-	// 		console.log(e)
-	// 	}
-	// }
-	//
-	// // api original
-	// useEffect(() => {
-	// 	fetchNews(currentPage).catch(e => console.log(e))
-	// }, [currentPage])
+	const fetchNews = async currentPage => {
+		try {
+			setIsLoading(true)
+			const response = await getNews(currentPage, pageSize)
+			setNews(response.news)
+			console.log('response', response)
+			setIsLoading(false)
+		} catch (e) {
+			console.log(e)
+		}
+	}
+
+	// api original
+	useEffect(() => {
+		fetchNews(currentPage).catch(e => console.log(e))
+	}, [currentPage])
 
 	// api mok
-	useEffect(() => {
-		const fetchNews = async () => {
-			try {
-				setIsLoading(true)
-				const response = await getMokNews()
-				setNews(response.news)
-				// console.log('response', response)
-				setIsLoading(false)
-			} catch (e) {
-				console.log(e)
-			}
-		}
-		fetchNews()
-	}, [])
+	// useEffect(() => {
+	// 	const fetchNews = async () => {
+	// 		try {
+	// 			setIsLoading(true)
+	// 			const response = await getMokNews()
+	// 			setNews(response.news)
+	// 			// console.log('response', response)
+	// 			setIsLoading(false)
+	// 		} catch (e) {
+	// 			console.log(e)
+	// 		}
+	// 	}
+	// 	fetchNews()
+	// }, [])
 
 	// section pagination
 	const handleNextPage = () => {
@@ -68,8 +68,6 @@ function Main() {
 
 	return (
 		<main className={styles.main}>
-			{/*<NewItem item={news[0]}/>*/}
-
 			{news.length > 0 && !isLoading ? (
 				<NewBanner item={news[0]} />
 			) : (
