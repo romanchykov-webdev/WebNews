@@ -6,7 +6,9 @@ import Categories from '../../components/Categories/Categories.jsx'
 import NewBanner from '../../components/NewBaner/NewBanner.jsx'
 import NewsList from '../../components/NewsList/NewsList.jsx'
 import Pagination from '../../components/Pagination/Pagination.jsx'
+import Search from '../../components/Search/Search.jsx'
 import Skeleton from '../../components/Skeleton/Skeleton.jsx'
+import { useCustomDebounce } from '../../helpers/hooks/useDebounce.js'
 
 import styles from './styles.module.css'
 
@@ -17,6 +19,10 @@ function Main() {
 	const [categories, setCategories] = useState([])
 
 	const [selectedCategory, setSelectedCategory] = useState('All')
+
+	const [keywords, setKeywords] = useState('')
+
+	const debounceKeywords = useCustomDebounce(keywords, 500)
 
 	const [currentPage, setCurrentPage] = useState(1)
 	const totalPages = 10
@@ -29,7 +35,8 @@ function Main() {
 	// 		const response = await getNews({
 	// 			page_number: currentPage,
 	// 			page_size: pageSize,
-	// 			category: selectedCategory === 'All' ? null : selectedCategory
+	// 			category: selectedCategory === 'All' ? null : selectedCategory,
+	// 			keywords:keywords
 	// 		})
 	// 		setNews(response.news)
 	// 		console.log('response', response)
@@ -42,7 +49,7 @@ function Main() {
 	// api original
 	// useEffect(() => {
 	// 	fetchNews(currentPage).catch(e => console.log(e))
-	// }, [currentPage, selectedCategory])
+	// }, [currentPage, selectedCategory,debounceKeywords])
 
 	// api	get categories
 	// const fetchCategories = async () => {
@@ -88,8 +95,10 @@ function Main() {
 				console.log(e)
 			}
 		}
+
 		fetchNews().catch(err => console.log(err))
-	}, [selectedCategory])
+	}, [selectedCategory, debounceKeywords])
+	// console.log('debounceValue', debounceValue)
 
 	// section pagination
 	const handleNextPage = () => {
@@ -115,6 +124,9 @@ function Main() {
 				selectedCategory={selectedCategory}
 				setSelectedCategory={setSelectedCategory}
 			/>
+
+			{/*Search*/}
+			<Search keywords={keywords} setKeywords={setKeywords} />
 
 			{/*banner*/}
 			{news.length > 0 && !isLoading ? (
