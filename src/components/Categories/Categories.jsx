@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import Skeleton from '../Skeleton/Skeleton.jsx'
 
@@ -7,6 +7,26 @@ import styles from './styles.module.css'
 function Categories({ categories, selectedCategory, setSelectedCategory }) {
 	// console.log('categories', categories.length)
 	const scrollRef = useRef(null)
+
+	// проверку положения прокрутки
+	const [canScrollLeft, setCanScrollLeft] = useState(false)
+	const [canScrollRight, setCanScrollRight] = useState(true)
+
+	// Отключение кнопок на границах
+	const checkScrollPosition = () => {
+		if (scrollRef.current) {
+			const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current
+			setCanScrollLeft(scrollLeft > 0)
+			setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 1)
+		}
+	}
+	useEffect(() => {
+		checkScrollPosition()
+		const container = scrollRef.current
+		container?.addEventListener('scroll', checkScrollPosition)
+		return () =>
+			container?.removeEventListener('scroll', checkScrollPosition)
+	}, [])
 
 	const scrollLeft = () => {
 		if (scrollRef.current) {
@@ -21,7 +41,11 @@ function Categories({ categories, selectedCategory, setSelectedCategory }) {
 
 	return (
 		<div className={styles.wrapper}>
-			<button className={styles.categoryButton} onClick={scrollLeft}>
+			<button
+				className={styles.categoryButton}
+				onClick={scrollLeft}
+				disabled={!canScrollLeft}
+			>
 				{'<'}
 			</button>
 			<div className={styles.wrapperCategories} ref={scrollRef}>
@@ -52,7 +76,11 @@ function Categories({ categories, selectedCategory, setSelectedCategory }) {
 							)
 						})}
 			</div>
-			<button className={styles.categoryButton} onClick={scrollRight}>
+			<button
+				className={styles.categoryButton}
+				onClick={scrollRight}
+				disabled={!canScrollRight}
+			>
 				{'>'}
 			</button>
 		</div>
