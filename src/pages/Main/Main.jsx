@@ -27,9 +27,9 @@ function Main() {
 	// 	try {
 	// 		setIsLoading(true)
 	// 		const response = await getNews({
-	// 		page_number:currentPage,
-	// 		page_size:pageSize,
-	// 		category:selectedCategory === "All"? null : selectedCategory
+	// 			page_number: currentPage,
+	// 			page_size: pageSize,
+	// 			category: selectedCategory === 'All' ? null : selectedCategory
 	// 		})
 	// 		setNews(response.news)
 	// 		console.log('response', response)
@@ -42,8 +42,7 @@ function Main() {
 	// api original
 	// useEffect(() => {
 	// 	fetchNews(currentPage).catch(e => console.log(e))
-	// }, [currentPage,selectedCategory])
-	// -------------------
+	// }, [currentPage, selectedCategory])
 
 	// api	get categories
 	// const fetchCategories = async () => {
@@ -60,6 +59,7 @@ function Main() {
 	// useEffect(() => {
 	// 	fetchCategories().catch(e => console.log(e))
 	// }, [])
+	// ---------------------------------------------------
 
 	// get mok categories
 	useEffect(() => {
@@ -73,7 +73,7 @@ function Main() {
 		}
 		fetchCategories().catch(err => console.log(err))
 	}, [])
-	console.log('get mok categories', categories)
+	// console.log('get mok categories', categories)
 
 	// api mok
 	useEffect(() => {
@@ -89,7 +89,7 @@ function Main() {
 			}
 		}
 		fetchNews().catch(err => console.log(err))
-	}, [])
+	}, [selectedCategory])
 
 	// section pagination
 	const handleNextPage = () => {

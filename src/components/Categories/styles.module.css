@@ -5,10 +5,11 @@
 }
 .wrapperCategories {
 	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: start;
-	gap: 12px;
+	/*flex-direction: row;*/
+	align-items: flex-start;
+	box-sizing: border-box;
+	/*justify-content: start;*/
+	gap: 8px;
 	width: 100%;
 	overflow-x: auto; /* Включаем горизонтальную прокрутку */
 	white-space: nowrap; /* Запрещаем перенос кнопок на следующую строку */
@@ -35,6 +36,7 @@
 	justify-content: center;
 	font-size: 16px;
 	color: #090a0a;
+	background-color: #f2f4f5;
 	padding: 8px 16px;
 	cursor: pointer;
 	border-radius: 50px;
@@ -45,6 +47,7 @@
 }
 .isActiveCategory {
 	background-color: #e7e7ff;
+	color: #6b4eff;
 }
 
 .categoryButtonSkeleton {
