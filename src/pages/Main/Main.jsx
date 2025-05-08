@@ -29,75 +29,75 @@ function Main() {
 	const pageSize = 10
 
 	// get al news
-	// const fetchNews = async currentPage => {
-	// 	try {
-	// 		setIsLoading(true)
-	// 		const response = await getNews({
-	// 			page_number: currentPage,
-	// 			page_size: pageSize,
-	// 			category: selectedCategory === 'All' ? null : selectedCategory,
-	// 			keywords:keywords
-	// 		})
-	// 		setNews(response.news)
-	// 		console.log('response', response)
-	// 		setIsLoading(false)
-	// 	} catch (e) {
-	// 		console.log(e)
-	// 	}
-	// }
+	const fetchNews = async currentPage => {
+		try {
+			setIsLoading(true)
+			const response = await getNews({
+				page_number: currentPage,
+				page_size: pageSize,
+				category: selectedCategory === 'All' ? null : selectedCategory,
+				keywords: keywords
+			})
+			setNews(response.news)
+			console.log('response', response)
+			setIsLoading(false)
+		} catch (e) {
+			console.log(e)
+		}
+	}
 
 	// api original
-	// useEffect(() => {
-	// 	fetchNews(currentPage).catch(e => console.log(e))
-	// }, [currentPage, selectedCategory,debounceKeywords])
+	useEffect(() => {
+		fetchNews(currentPage).catch(e => console.log(e))
+	}, [currentPage, selectedCategory, debounceKeywords])
 
 	// api	get categories
-	// const fetchCategories = async () => {
-	// 	try {
-	// 		const response = await getCategories()
-	// 		setCategories(['All', ...response.categories])
-	// 	} catch (e) {
-	// 		console.log(e)
-	// 	}
-	// }
+	const fetchCategories = async () => {
+		try {
+			const response = await getCategories()
+			setCategories(['All', ...response.categories])
+		} catch (e) {
+			console.log(e)
+		}
+	}
 	// console.log('categories', categories)
 
 	// get api categories useEffect
-	// useEffect(() => {
-	// 	fetchCategories().catch(e => console.log(e))
-	// }, [])
+	useEffect(() => {
+		fetchCategories().catch(e => console.log(e))
+	}, [])
 	// ---------------------------------------------------
 
 	// get mok categories
-	useEffect(() => {
-		const fetchCategories = async () => {
-			try {
-				const response = await getMokCategories()
-				setCategories(response.categories)
-			} catch (e) {
-				console.log(e)
-			}
-		}
-		fetchCategories().catch(err => console.log(err))
-	}, [])
+	// useEffect(() => {
+	// 	const fetchCategories = async () => {
+	// 		try {
+	// 			const response = await getMokCategories()
+	// 			setCategories(response.categories)
+	// 		} catch (e) {
+	// 			console.log(e)
+	// 		}
+	// 	}
+	// 	fetchCategories().catch(err => console.log(err))
+	// }, [])
 	// console.log('get mok categories', categories)
 
 	// api mok
-	useEffect(() => {
-		const fetchNews = async () => {
-			try {
-				setIsLoading(true)
-				const response = await getMokNews()
-				setNews(response.news)
-				// console.log('response', response)
-				setIsLoading(false)
-			} catch (e) {
-				console.log(e)
-			}
-		}
-
-		fetchNews().catch(err => console.log(err))
-	}, [selectedCategory, debounceKeywords])
+	// useEffect(() => {
+	// 	const fetchNews = async () => {
+	// 		try {
+	// 			setIsLoading(true)
+	// 			const response = await getMokNews()
+	// 			setNews(response.news)
+	// 			// console.log('response', response)
+	// 			setIsLoading(false)
+	// 		} catch (e) {
+	// 			console.log(e)
+	// 		}
+	// 	}
+	//
+	// 	fetchNews().catch(err => console.log(err))
+	// }, [selectedCategory, debounceKeywords])
 	// console.log('debounceValue', debounceValue)
 
 	// section pagination
