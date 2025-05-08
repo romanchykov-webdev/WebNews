@@ -13,7 +13,9 @@
 	justify-content: center;
 	gap: 10px;
 }
-.arrow {
+.active {
+	border: none;
+	background-color: transparent;
 }
 .arrow,
 .pageNumber {
@@ -25,4 +27,5 @@
 .arrow:disabled,
 .pageNumber:disabled {
 	cursor: default;
+	background-color: transparent;
 }
