@@ -38,7 +38,7 @@ function Categories({ categories, selectedCategory, setSelectedCategory }) {
 			scrollRef.current.scrollBy({ left: 150, behavior: 'smooth' })
 		}
 	}
-
+	console.log('selectedCategory', selectedCategory)
 	return (
 		<div className={styles.wrapper}>
 			<button
@@ -49,6 +49,16 @@ function Categories({ categories, selectedCategory, setSelectedCategory }) {
 				{'<'}
 			</button>
 			<div className={styles.wrapperCategories} ref={scrollRef}>
+				<button
+					onClick={() => setSelectedCategory(null)}
+					className={
+						!selectedCategory
+							? `${styles.categoryButton} ${styles.isActiveCategory}`
+							: styles.categoryButton
+					}
+				>
+					All
+				</button>
 				{categories.length === 0
 					? [...Array(10)].map((_, i) => {
 							return (
