@@ -1,5 +1,6 @@
 import React from 'react'
 
+import withSkeleton from '../../helpers/hocs/withSkeleton.jsx'
 import NewItem from '../NewItem/NewItem.jsx'
 
 import styles from './styles.module.css'
@@ -13,5 +14,6 @@ function NewsList({ news }) {
 		</ul>
 	)
 }
+const NewListWithSkeleton = withSkeleton(NewsList, 'item', 10)
 
-export default NewsList
+export default NewListWithSkeleton
