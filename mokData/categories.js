@@ -1,5 +1,4 @@
 export const categories = [
-	'All',
 	'regional',
 	'technology',
 	'lifestyle',

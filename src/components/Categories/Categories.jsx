@@ -38,7 +38,7 @@ function Categories({ categories, selectedCategory, setSelectedCategory }) {
 			scrollRef.current.scrollBy({ left: 150, behavior: 'smooth' })
 		}
 	}
-	console.log('selectedCategory', selectedCategory)
+	// console.log('selectedCategory', selectedCategory)
 	return (
 		<div className={styles.wrapper}>
 			<button

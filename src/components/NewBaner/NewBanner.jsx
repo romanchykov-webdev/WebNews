@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { formatTimeAgo } from '../../helpers/formatTimeAgo.js'
-import withSkeleton from '../../helpers/hocs/withSkeleton.jsx'
 import Image from '../Image/Image.jsx'
 
 import styles from './styles.module.css'
@@ -20,5 +19,5 @@ function NewBanner({ item }) {
 		</div>
 	)
 }
-const NewBannerWithSkeleton = withSkeleton(NewBanner, 'banner', 1)
-export default NewBannerWithSkeleton
+// const NewBannerWithSkeleton = withSkeleton(NewBanner, 'banner', 1)
+export default NewBanner
