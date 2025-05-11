@@ -15,6 +15,7 @@
 }
 .active {
 	border: none;
+	font-size: 24px;
 	background-color: transparent;
 }
 .arrow,
@@ -22,10 +23,14 @@
 	cursor: pointer;
 	border: none;
 	background-color: white;
+	font-size: 24px;
+	font-weight: bold;
 }
 
 .arrow:disabled,
 .pageNumber:disabled {
+	font-size: 24px;
+	color: grey;
 	cursor: default;
 	background-color: transparent;
 }

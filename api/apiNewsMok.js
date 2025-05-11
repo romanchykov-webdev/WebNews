@@ -7,7 +7,7 @@ import { data } from '../mokData/news.js'
 export const getMokNews = async () => {
 	try {
 		// Имитация задержки сети (опционально, для реализма)
-		await new Promise(resolve => setTimeout(resolve, 500))
+		await new Promise(resolve => setTimeout(resolve, 50000))
 
 		// Возврат моковых данных в формате, имитирующем API-ответ
 		return { news: data }
