@@ -6,13 +6,16 @@ const Slider = ({ children, step = 150 }) => {
 	const sliderRef = useRef(null)
 
 	const scrollLeft = () => {
-		sliderRef.current.scrollLeft -= step
+		if (sliderRef.current) {
+			sliderRef.current.scrollBy({ left: -step, behavior: 'smooth' }) //behavior: 'smooth' — задаёт анимацию плавной прокрутки.
+		}
 	}
 
 	const scrollRight = () => {
-		sliderRef.current.scrollLeft += step
+		if (sliderRef.current) {
+			sliderRef.current.scrollBy({ left: step, behavior: 'smooth' })
+		}
 	}
-
 	return (
 		<div className={styles.slider}>
 			<button onClick={scrollLeft} className={styles.arrow}>{`<`}</button>
