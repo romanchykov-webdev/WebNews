@@ -10,6 +10,7 @@ function Pagination({
 	handlePageChange
 }) {
 	// console.log('totalPages', totalPages)
+	// console.log('Pagination currentPage', currentPage)
 	return (
 		<div className={styles.pagination}>
 			<button
